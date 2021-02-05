@@ -1,0 +1,43 @@
+Part,Description,Vendor,RQ,PN,MOQ,MOQ Cost,link,Inventory
+Flash lamp Hammamatsu,Light source for device,Hamamatsu,1,L13651-SMA,1,-,https://www.hamamatsu.com/jp/en/product/light-and-radiation-sources/lamp-module_unit/xenon-flash-lamp-module/2w/index.html,1
+C12880 Breakout board,Spectrometer eval board,Groupgets,1,NaN,1,$99.00 ,https://groupgets.com/manufacturers/getlab/products/c12880ma-breakout-board,1
+C12880MA-10,Spectrometer with SMA connector,Hamamatsu,1,C12880ma-10,1,-,https://www.hamamatsu.com/us/en/product/type/L13651/index.html,3
+Arduino Nano,"Microcontroller used for controlling spectrometer, flash lamp,
+battery read, module read etc.",Arduino,1,NaN,1,$20.70 ,https://store.arduino.cc/usa/arduino-nano,3
+Custom PCB,"Connects arduino to Pi, buck converter, adc, pot etc",JLC pcb,1,NaN,5,$23.16 ,jlcpcb.com,15
+18650 batteries,3.7 V batteries used to power system,Digikey,3,NaN,1,$5.95 ,https://www.digikey.com/en/products/detail/sparkfun-electronics/PRT-12895/5271298,3
+JST connector ( female 4 pin),Connector for Flash Lamp,Digikey,1,NaN,1,$0.10 ,https://www.digikey.com/en/products/detail/jst-sales-america-inc/XHP-4/683353,3
+JST connector (male 4 pin),Connector for Flash Lamp,Digikey,1,NaN,1,$0.21 ,https://www.digikey.com/en/products/detail/jst-sales-america-inc/B4B-XH-A-LF-SN/1651047,3
+"JST connector ( male 5 pin, right angle)",Module detect connector,Digikey,1,NaN,1,$0.31 ,https://www.digikey.com/en/products/detail/jst-sales-america-inc/S5B-XH-A-1-LF-SN/9961924,3
+Potentiometer,sets lower reference for ADC,Digikey,1,NaN,1,$1.98 ,https://www.digikey.com/en/products/detail/3313J-1-103E/3313J-103ECT-ND/612894?itemSeq=341084395,3
+ADS8321 (16 bit ADC),Read spectrometer values,Digikey,1,NaN,1,$12.08 ,https://www.digikey.com/en/products/detail/texas-instruments/ADS8321E-250/295542,3
+JST connector ( male 8 pin) (right angle),Module control connector,Digikey,1,NaN,1,$0.48 ,https://www.digikey.com/en/products/detail/jst-sales-america-inc/S8B-XH-A-LF-SN/1651023,3
+JST connector ( female 12 pin),Spectrometer connector,Digikey,2,NaN,1,$0.24 ,https://www.digikey.com/en/products/detail/jst-sales-america-inc/XHP-12/1651,3
+JST connector ( male 12 pin),Spectrometer connector,Digikey,2,NaN,1,$0.51 ,https://www.digikey.com/en/products/detail/jst-sales-america-inc/B12B-XH-AM-LF-SN/1651031,3
+JST Jumper 4in,"Precrimped jumpers, JST",Digikey,12,NaN,1,$0.74 ,https://www.digikey.com/en/products/detail/jst-sales-america-inc/ASXHSXH22K102/9961917,3
+JST Jumper 2in,"Precrimped jumpers, JST",Digikey,4,NaN,1,$0.70 ,https://www.digikey.com/en/products/detail/jst-sales-america-inc/ASXHSXH22K51/6684930,3
+Buck converter,Steps down input voltage,Amazon*,1,NaN,6,$9.99 ,https://www.amazon.com/MCIGICM-step-down-Converter-3-0-40V-1-5-35V/dp/B06XZ1DKF2/ref=sr_1_3?crid=3538ZV9UL7Y8R&dchild=1&keywords=buck+converter&qid=1602700818&sprefix=buck+con%2Caps%2C138&sr=8-3,18
+Li-ion BMS,To manage charging and discharging of 18650 cells,Amazon*,1,NaN,3,$6.99 ,https://www.amazon.com/Charger-Lithium-Battery-Charging-Protection/dp/B07T2P5XHS/ref=pd_di_sccai_6/136-1714892-2743945?_encoding=UTF8&pd_rd_i=B07T2P5XHS&pd_rd_r=c9ba44fb-91d1-4528-ade8-4828c2d64a5e&pd_rd_w=PawQR&pd_rd_wg=o6HL7&pf_rd_p=5415687b-2c9d-46da-88a4-bbcfe8e07f3c&pf_rd_r=894N20PD1H3KH5H2ASC4&psc=1&refRID=894N20PD1H3KH5H2ASC4,9
+Bluetooth keyboard,Bluetooth keyboard to allow for typing and mousepad,Amazon*,1,NaN,1,$35.00 ,https://www.amazon.com/Bluetooth-Jelly-Comb-Rechargable-Tablet-Dark/dp/B07P2HW12P/ref=sr_1_4?crid=1HS92W9CUQPQY&dchild=1&keywords=bluetooth+keyboard+with+touchpad&qid=1602699122&sprefix=bluettoth+keyboard+w%2Caps%2C142&sr=8-4,3
+7 inch Screen,Connects to raspberry pi for viewing desktop,Amazon*,1,NaN,1,$55.99 ,https://www.amazon.com/Kuman-Capacitive-Display-Raspberry-SC7B/dp/B01F3801A2,3
+3D printer material,Create enclosure for ESS system,Amazon*,1,NaN,1,$22.99 ,https://www.amazon.com/HATCHBOX-3D-Filament-Dimensional-Accuracy/dp/B00J0ECR5I?ref_=ast_sto_dp,3
+Heat set inserts,Allows for screws to hold together different device components,Amazon*,1,NaN,1,$10.95 ,https://www.amazon.com/Threaded-Heat-Set-Inserts-connecting-injection/dp/B07BH5X252/ref=sr_1_4?crid=1LEW7WMI0VTN2&dchild=1&keywords=4-40+heat+set+insert&qid=1602701039&sprefix=4-40+heat+%2Cindustrial%2C139&sr=8-4,3
+Fan,Cooling system,Amazon*,1,NaN,5,$9.99 ,https://www.amazon.com/Brushless-Raspberry-Connector-Separating-Interface/dp/B07TG7G7M9/ref=sr_1_7?dchild=1&keywords=raspberry+pi+fan+5+pack+easycargo&qid=1602612069&s=electronics&sr=1-7,15
+"SD Card, 32gb Class 10",Card for Pi OS and software,Amazon*,1,NaN,1,$8.35 ,https://www.amazon.com/SanDisk-Ultra-UHS-I-Memory-Adapter/dp/B00M55C0NS,3
+R bend HDMI connector,connect touch screen to Pi,Adafruit,2,3549,1,$6.50 ,https://www.adafruit.com/product/3549,1
+USB connector shells,Connect Pi to screen and arduino to Pi,Adafruit,3,1827,1,$0.95 ,https://www.adafruit.com/product/1827,1
+Micro USB connector shell,Connect screen to Pi for power and Touch capabilities,Adafruit,1,1390,1,$0.95 ,https://www.adafruit.com/product/1390,1
+Mini USB B connector shell,Connect arduino to pi,Adafruit,1,1389,1,$0.95 ,https://www.adafruit.com/product/1389,1
+Ribbon Cable 20mm,connect screen to Pi,Adafruit,1,3561,1,$1.95 ,https://www.adafruit.com/product/3561,1
+Panel Mount USB input,Connect USB flash drive or mouse/keyboard,Adafruit,1,4055,1,$4.95 ,https://www.adafruit.com/product/4055,1
+On/Off switch,On/Off switch,Adafruit,1,915,1,$4.95 ,https://www.adafruit.com/product/915,1
+Raspberry Pi Standoff,Allow connection of Pi to PCB board,Adafruit,1,1979,1,$2.95 ,https://www.adafruit.com/product/1979,1
+Raspberry Pi 3B+,"Main microprocessor used for controlling saving of files and
+graphical user interface",Adafruit,1,3775,1,$35.00 ,https://www.adafruit.com/product/3775,1
+Hex Standoffs 2in,Fastners,McMaster,4,91075A224,1,$4.90 ,www.mcmaster.com,1
+M3 Flathead 10mm,Fastners,McMaster,2,92125A130,100,$5.81 ,www.mcmaster.com,1
+4-40 Flathead 1/2,Fastners,McMaster,7,92210A110,100,$3.85 ,www.mcmaster.com,1
+4-40 Hex 5/16in,Fastners,McMaster,18,92185A107,50,$4.83 ,www.mcmaster.com,1
+4-40 Hex 1/4in,Fastners,McMaster,4,92196A106,100,$3.92 ,www.mcmaster.com,1
+Hex Standoffs 3/4in,Fastners,McMaster,4,91115A519,1,$2.25 ,www.mcmaster.com,1
+6-32 Low Profile 3/8,Fastners,McMaster,8,93615A215,25,$7.85 ,www.mcmaster.com,1
