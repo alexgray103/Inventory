@@ -13,7 +13,7 @@ class inventory_main:
         self.helv72 = TkFont.Font(family="Helvetica", size=72, weight="bold")
         #self.label_font = TkFont.Font(family="Helvetica", size=36, weight="bold")
         self.label_font = TkFont.Font(family="Helvetica", size=36, weight="bold", underline = True)
-        self.inventory_font = TkFont.Font(family="Helvetica", size=20, weight="bold")
+        self.inventory_font = TkFont.Font(family="Helvetica", size=18, weight="bold")
         self.small_font = TkFont.Font(family="Helvetica", size=18, weight="bold")
         self.title_small_font = TkFont.Font(family="Helvetica", size=24, weight="bold", underline = True)
         
@@ -78,7 +78,7 @@ class inventory_main:
         
         label_title = Label(self.second_frame, fg = 'white', bg = self.background_color,
                             text = 'BMO lab Inventory', font = self.helv72)
-        label_title.grid(row = 0, column = 0, columnspan = 2, padx = 50, pady = 10, sticky = 'nsew')
+        label_title.grid(row = 0, column = 0, columnspan = 3, padx = 50, pady = 10, sticky = 'nsew')
         
         #sort data frame
         self.df.sort_values(by = 'Part')
@@ -89,21 +89,13 @@ class inventory_main:
         self.root.after(4000, self.inventory_check)
         self.inventory_check()
         
-        create_bom_btn = Button(self.second_frame, text = 'Create BOM', command = self.create_bom)
-        create_bom_btn.grid(row =self.row+2, column = 0, padx = 30, pady = 4, sticky = 'nsew')
+        create_bom_btn = Button(self.second_frame, text = 'Create BOM', height = 7, command = self.create_bom)
+        create_bom_btn.grid(row =1, column = 0, padx = 5, pady = 4, sticky = 'nsew')
         
-        new_part = Button(self.second_frame, text = "Add New Part",
-                           command = self.new_part.create_window)
-        new_part.grid(row =self.row+2, column = 1, padx = 30, pady = 4, sticky = 'nsew')
-        row_config = []
-        for x in range(int(self.row/2) + 2):
-            row_config += [x]
-        row_config = tuple(row_config)
+        new_part = Button(self.second_frame, text = "Add New Device",
+                           command = self.inventory_check, height = 7)
+        new_part.grid(row =1, column = 1, columnspan = 2, padx = 5, pady = 4, sticky = 'nsew')
         
-        
-        # allow buttons and frames to resize with the resizing of the root window
-        self.second_frame.grid_columnconfigure((0,1),weight = 1)
-        self.second_frame.grid_rowconfigure(row_config,weight = 1)
         
     def inventory_check(self):
         self.inventory_popup = Toplevel(self.root, bg = self.background_color)
@@ -135,19 +127,17 @@ class inventory_main:
         
         ok_button = Button(self.inventory_popup, text = "OK",
                            command = destroy_popup, width = 40, height = 5)
-        ok_button.grid(row = last_row+1, column = 0, pady  =2)
+        ok_button.grid(row = last_row+1, column = 0, pady  =2, sticky = 'nsew')
                 
         create_inventory_bom = Button(self.inventory_popup, text = 'Create BOM',
                                       width = 40, height = 5, command = self.create_bom)
-        create_inventory_bom.grid(row = last_row+1, column = 1, pady = 2, padx = 1)
+        create_inventory_bom.grid(row = last_row+1, column = 1, pady = 2, padx = 1, sticky = 'nsew')
         
         self.root.after(10000, self.inventory_popup.destroy)
             
         # cofngiure resizing of buttons
         
-        
-        
-        
+    
         
     def create_bom(self):
         # create window to paste 
@@ -223,39 +213,41 @@ class inventory_main:
         
         self.row = len(self.df.index)
         
-        r = 1
+        r = 2
         c = 0
-        
+        button_width = 7
+        padding = 5
+        button_height = 1
         for x in range(self.row):
             inventory_row = self.df.iloc[x, :]
             
-            self.inventory_frame[x] = Frame(self.second_frame, bg = 'gray10')
+            self.inventory_frame[x] = Frame(self.second_frame, bg = 'green')
             
-            self.inventory_frame[x].grid(row = r, column = c, padx = 10, pady = 4)
+            self.inventory_frame[x].grid(row = r, column = c, padx = padding, pady = 3)
             
             # create label for item
             self.item_btn = Button(self.inventory_frame[x], text = inventory_row[0], font = self.inventory_font,
-                                fg = 'black', bg='#54FA9B', wraplength = 250)
-            self.item_btn.grid(row = 0, column = 0, pady = (0,2), ipadx = 5, sticky = 'nsew')
+                                fg = 'black', bg='#54FA9B', width = 15, height = 2, wraplength = 150)
+            self.item_btn.grid(row = 0, column = 0, pady = 1, padx = 1, ipadx = 5, sticky = 'nsew')
             
             self.item_number_lbl[x] = Label(self.inventory_frame[x], text = inventory_row[8], font = self.inventory_font,
-                               bg = self.dark_background, fg = 'white')
-            self.item_number_lbl[x].grid(row = 0, column = 2, ipady = 1, pady = (4,2), ipadx = 5, sticky = 'nsew')
+                               bg = self.dark_background, fg = 'white', width = button_width , height = 1)
+            self.item_number_lbl[x].grid(row = 0, column = 2, ipady = 1, pady = 1, padx = 1, ipadx = 5, sticky = 'nsew')
             
             self.plus_button[x] = Button(self.inventory_frame[x], text = '+', font = self.inventory_font,
-                               bg = self.dark_background, command = lambda x=x: self.increase_value(x))
-            self.plus_button[x].grid(row = 0, column = 3, ipady = 1, pady = (2,2), ipadx = 5, sticky = 'nsew')
+                               bg = self.dark_background, width = button_width , height = 1, command = lambda x=x: self.increase_value(x))
+            self.plus_button[x].grid(row = 0, column = 3, ipady = 1, pady = 1, padx = 1, ipadx = 5, sticky = 'nsew')
             
             self.minus_button[x] = Button(self.inventory_frame[x], text = '-', font = self.inventory_font,
-                               bg = self.dark_background, command = lambda x=x: self.decrease_value(x))
-            self.minus_button[x].grid(row = 0, column = 1, padx = (2,0), ipady = 1, pady = (2,2), ipadx = 5, sticky = 'nsew')
+                               bg = self.dark_background, width = button_width , height = 3, command = lambda x=x: self.decrease_value(x))
+            self.minus_button[x].grid(row = 0, column = 1, ipady = 1, pady = 1, padx = 1, ipadx = 5, sticky = 'nsew')
             
             if int(inventory_row[8]) < int(3*int(inventory_row[3])):
                 self.inventory_frame[x].configure(bg = 'indianred1')
                 #get the row number that has a low inventory and save to a string
                 self.inventory_low += [x]
             c+=1
-            if c > 1:
+            if c > 2:
                 c = 0
                 r +=1
             
@@ -284,7 +276,7 @@ class inventory_main:
                 #get the row number that has a low inventory and save to a string
                 self.inventory_low += [x]
             else:
-                self.inventory_frame[x].configure(bg = 'gray10')
+                self.inventory_frame[x].configure(bg = 'green')
         
     
         
