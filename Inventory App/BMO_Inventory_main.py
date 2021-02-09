@@ -23,13 +23,11 @@ class inventory_main:
         
         self.csv_location = '/Users/Alexander/Desktop/Inventory/LAB_BOM.csv'
         
-        
         self.root.bind("<Escape>", self.toggle_fullscreen)
         self.root.title("BMO Lab Inventory")
         self.root.attributes('-fullscreen', self.fullscreen_handler) # fullscreen on touchscreen
         self.root.configure(bg= self.background_color)
         self.root.minsize(800,480)
-        
         
         ### create a data frame for the inventory
         self.df = pd.read_csv(self.csv_location)
@@ -40,8 +38,6 @@ class inventory_main:
         
         ### allow for new part window
         self.new_part = new_part_window(root)
-        
-        
         
         ########## Scrollable page ############################
         #######################################################
@@ -60,7 +56,6 @@ class inventory_main:
 
         # Configure The Canvas
         self.my_canvas.configure(yscrollcommand=self.my_scrollbar.set)
-
 
 
         self.my_canvas.bind('<Configure>', lambda e: self.my_canvas.configure(scrollregion = self.my_canvas.bbox("all")))
@@ -86,8 +81,8 @@ class inventory_main:
         #paint the screen with inventory details
         self.inventory_update()
         
-        self.root.after(4000, self.inventory_check)
-        self.inventory_check()
+        #self.root.after(4000, self.inventory_check)
+        #self.inventory_check()
         
         create_bom_btn = Button(self.second_frame, text = 'Create BOM', height = 7, command = self.create_bom)
         create_bom_btn.grid(row =1, column = 0, padx = 5, pady = 4, sticky = 'nsew')
@@ -96,37 +91,39 @@ class inventory_main:
                            command = self.inventory_check, height = 7)
         new_part.grid(row =1, column = 1, columnspan = 2, padx = 5, pady = 4, sticky = 'nsew')
         
-        
     def inventory_check(self):
         self.inventory_popup = Toplevel(self.root, bg = self.background_color)
         self.inventory_popup.geometry('1000x800')
         self.inventory_popup.title('Inventory Status')
         self.inventory_popup.lift()
-        
-        def destroy_popup():
-            self.inventory_popup.destroy()
-            
-            
-            
+                
         title = Label(self.inventory_popup, text = "The following Items need to be Restocked",
                       bg = self.background_color, fg = 'white', font = self.title_small_font)
         title.grid(row = 0, column = 0, padx = 10)
         c = 0
         r = 1
         last_row = 23
+        needed = list(range(250))
+        x = 0
+        
         for value in self.inventory_low:
-            low = '-' + str(self.df.iloc[value,0])
+            needed[value] = 0
+            RQ = self.df.iloc[value, 3]
+            information = self.df.iloc[value, 8]
+            needed[value] += int(RQ - information)
+            low = '-' + str(self.df.iloc[value,0]) + '(qty: ' + str(needed[value]) + ')'
             label = Label(self.inventory_popup, text = low, font = self.small_font,
                           fg = 'white', bg = self.background_color, wraplength = 400)
-            label.grid(row = r, column = c, sticky = 'nsew', padx = 10)
+            label.grid(row = r, column = c, sticky = 'nw', padx = 10)
             r+=1
             
-            if value ==20:
+            if x ==15:
                 c += 1
                 r = 1
-        
+            x+= 1
+            
         ok_button = Button(self.inventory_popup, text = "OK",
-                           command = destroy_popup, width = 40, height = 5)
+                           command = self.inventory_popup.destroy, width = 40, height = 5)
         ok_button.grid(row = last_row+1, column = 0, pady  =2, sticky = 'nsew')
                 
         create_inventory_bom = Button(self.inventory_popup, text = 'Create BOM',
@@ -135,9 +132,6 @@ class inventory_main:
         
         self.root.after(10000, self.inventory_popup.destroy)
             
-        # cofngiure resizing of buttons
-        
-    
         
     def create_bom(self):
         # create window to paste 
@@ -182,16 +176,10 @@ class inventory_main:
         self.save_file = '/Users/Alexander/Desktop/Inventory/bom.csv'
         new_df.to_csv(self.save_file, mode = 'w', index=False)
         
-        
-        def destroy_popup():
-            self.inventory_popup.destroy()
-            
-        
-        
             
         
         ok_button = Button(self.bom, text = "OK",
-                           command = destroy_popup, width = 40, height = 5)
+                           command = self.bom.destroy, width = 40, height = 5)
         ok_button.grid(row = last_row+1, column = 0, columnspan = 2, pady  =2)
         
         
@@ -210,7 +198,7 @@ class inventory_main:
         self.item_btn = list(range(250))
         self.plus_button = list(range(250))
         self.minus_button = list(range(250))
-        
+        self.item_name = list(range(250))
         self.row = len(self.df.index)
         
         r = 2
@@ -220,15 +208,16 @@ class inventory_main:
         button_height = 1
         for x in range(self.row):
             inventory_row = self.df.iloc[x, :]
+            self.item_name[x] = inventory_row
             
             self.inventory_frame[x] = Frame(self.second_frame, bg = 'green')
             
             self.inventory_frame[x].grid(row = r, column = c, padx = padding, pady = 3)
             
             # create label for item
-            self.item_btn = Button(self.inventory_frame[x], text = inventory_row[0], font = self.inventory_font,
-                                fg = 'black', bg='#54FA9B', width = 15, height = 2, wraplength = 150)
-            self.item_btn.grid(row = 0, column = 0, pady = 1, padx = 1, ipadx = 5, sticky = 'nsew')
+            self.item_btn[x] = Button(self.inventory_frame[x], text = inventory_row[0], font = self.inventory_font,
+                                fg = 'black', bg='#54FA9B', width = 15, height = 2, wraplength = 150, command = lambda x=x: self.new_part.create_window(self.item_name[x]))
+            self.item_btn[x].grid(row = 0, column = 0, pady = 1, padx = 1, ipadx = 5, sticky = 'nsew')
             
             self.item_number_lbl[x] = Label(self.inventory_frame[x], text = inventory_row[8], font = self.inventory_font,
                                bg = self.dark_background, fg = 'white', width = button_width , height = 1)
@@ -241,11 +230,19 @@ class inventory_main:
             self.minus_button[x] = Button(self.inventory_frame[x], text = '-', font = self.inventory_font,
                                bg = self.dark_background, width = button_width , height = 3, command = lambda x=x: self.decrease_value(x))
             self.minus_button[x].grid(row = 0, column = 1, ipady = 1, pady = 1, padx = 1, ipadx = 5, sticky = 'nsew')
+            self.inventory_needed = []
+            self.inventory_low = []
             
-            if int(inventory_row[8]) < int(3*int(inventory_row[3])):
+            if int(inventory_row[8]) < int(inventory_row[3]):
                 self.inventory_frame[x].configure(bg = 'indianred1')
                 #get the row number that has a low inventory and save to a string
                 self.inventory_low += [x]
+            elif int(inventory_row[8]) >= int(inventory_row[3]) and int(inventory_row[8]) < int(3*inventory_row[3]):
+                self.inventory_frame[x].configure(bg = 'yellow')
+                self.inventory_needed += [x]
+            else:
+                self.inventory_frame[x].configure(bg = 'green')
+                
             c+=1
             if c > 2:
                 c = 0
@@ -270,15 +267,16 @@ class inventory_main:
         self.inventory_low = []
         for x in range(self.row):
             inventory_row = self.df.iloc[x, :]
-            
-            if int(inventory_row[8]) < int(3*int(inventory_row[3])):
+            self.inventory_needed = []
+            if int(inventory_row[8]) < int(int(inventory_row[3])):
                 self.inventory_frame[x].configure(bg = 'indianred1')
                 #get the row number that has a low inventory and save to a string
                 self.inventory_low += [x]
+            elif int(inventory_row[8]) >= int(inventory_row[3]) and int(inventory_row[8]) < int(3*inventory_row[3]):
+                self.inventory_frame[x].configure(bg = 'yellow')
+                self.inventory_needed += [x]
             else:
                 self.inventory_frame[x].configure(bg = 'green')
-        
-    
         
         
 root = Tk()
