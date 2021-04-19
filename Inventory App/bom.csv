@@ -1,0 +1,19 @@
+Part,Description,Vendor,Qty,link
+Buzzer,Allow for audio feedback to user on the main PCB ,Digikey,1,https://www.digikey.com/en/products/detail/cui-devices/cmi-1295ic-0585t/11674150
+C12880MA-10,Spectrometer with SMA connector,Hamamatsu,1,https://www.hamamatsu.com/us/en/product/type/L13651/index.html
+Main PCB,"Connects arduino to Pi, buck converter, adc, pot etc",JLC PCB,1,jlcpcb.com
+SMD USB ,Mount a USB onto the PCB ,Digikey,1,https://www.digikey.com/en/products/detail/assmann-wsw-components/au-y1006-2/5031761
+Straight HDMI connector,connect Pi to touch screen,Adafruit,1,https://www.adafruit.com/product/3548
+USB connector shells,Connect Pi to screen and arduino to Pi,Adafruit,2,https://www.adafruit.com/product/1827
+Buzzer,Allow for audio feedback to user on the main PCB ,Digikey,1,https://www.digikey.com/en/products/detail/cui-devices/cmi-1295ic-0585t/11674150
+C12880MA-10,Spectrometer with SMA connector,Hamamatsu,1,https://www.hamamatsu.com/us/en/product/type/L13651/index.html
+Main PCB,"Connects arduino to Pi, buck converter, adc, pot etc",JLC PCB,1,jlcpcb.com
+SMD USB ,Mount a USB onto the PCB ,Digikey,1,https://www.digikey.com/en/products/detail/assmann-wsw-components/au-y1006-2/5031761
+Straight HDMI connector,connect Pi to touch screen,Adafruit,1,https://www.adafruit.com/product/3548
+USB connector shells,Connect Pi to screen and arduino to Pi,Adafruit,2,https://www.adafruit.com/product/1827
+Buzzer,Allow for audio feedback to user on the main PCB ,Digikey,1,https://www.digikey.com/en/products/detail/cui-devices/cmi-1295ic-0585t/11674150
+C12880MA-10,Spectrometer with SMA connector,Hamamatsu,1,https://www.hamamatsu.com/us/en/product/type/L13651/index.html
+Main PCB,"Connects arduino to Pi, buck converter, adc, pot etc",JLC PCB,1,jlcpcb.com
+SMD USB ,Mount a USB onto the PCB ,Digikey,1,https://www.digikey.com/en/products/detail/assmann-wsw-components/au-y1006-2/5031761
+Straight HDMI connector,connect Pi to touch screen,Adafruit,1,https://www.adafruit.com/product/3548
+USB connector shells,Connect Pi to screen and arduino to Pi,Adafruit,2,https://www.adafruit.com/product/1827
